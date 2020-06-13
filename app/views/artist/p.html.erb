@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="entry">
+        <h3 class="h3">practice</h3>
+        <p><%= link_to '戻る', search_path %></p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                    <p class="list-group-item">Practice</p>
+
+                        <% @contents.each do |link|  %>
+                            <p class="list-group-item"><%=link %></p>
+                        <% end %>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="source list-group-item"><%= link_to 'Practice', songs_path %></p>
+                    
+                        <% @links.each do |link|  %>
+                            <p class="source list-group-item"><a target="_blank" href=https://www.ufret.jp/<%=link %>>Artist</a></p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <p class="source">Scraped from <a target="_blank" href=<%=@url %>>Ufret.com</a></p>
+</div>

@@ -1,1 +1,33 @@
 @import 'bootstrap/dist/css/bootstrap';
+.user-name {
+    margin-top: 3.5%;
+    padding-right: 5px;
+}
+
+.logout-button {
+    margin-right: 5px;
+}
+
+#home-container {
+    margin-top: 25px;
+}
+
+.navbar {
+    background-color: black !important;
+}
+  
+.nav-link {
+color: white !important;
+}
+
+.jumbotron {
+    background-image: asset-url('guitar.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 425px;
+}
+
+#boin{
+    font-size: 2.4em;
+}

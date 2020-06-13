@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="entry">
+    <h3 class="h3">「さ」から始まるアーティスト名</h3>
+    <p><%= link_to '戻る', search_path %></p>
+    <div class="outer">
+        <ul class="list-group">
+        <% @contents.each do |content| %>
+            <li class="list-group-item"><%= content %></li>
+        <% end %>
+        </ul>
+    </div>
+    </div>
+
+    <br>
+    <p class="source">Scraped from <a target="_blank" href=<%=@url %>>Ufret.com</a></p>
+</div>
