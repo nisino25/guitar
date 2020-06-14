@@ -1,14 +1,13 @@
 <div class="container">
-    <div class="entry"> 
+    <div class="entry">
         <h3 class="h3">Songs of<%= @artist %></h3>
-        <p><%= link_to '戻る', :back %></p>
+        <p><%= link_to '戻る', search_path %></p>
             <div class="container">
                 <div class="row">
                     <div class="col-xs-6">
 
                         <% @songs.each do |song|  %>
-                            <p class="list-group-item"><%= truncate(song.to_s, length: 50) %></p>
-                            
+                            <p class="list-group-item"><%= song %></p>
                         <% end %>
                     </div>
                     <div class="col-xs-6">
