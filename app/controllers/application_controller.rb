@@ -14,25 +14,27 @@ class ApplicationController < ActionController::Base
     end
 
     def save_song
-        if !Song.exists?(url: params[:link])
+        if !Song.exists?(url: "https://www.ufret.jp/"+params[:link])
             @song = Song.new
             @song.url = "https://www.ufret.jp/" +params[:link]
 
             require 'open-uri'
             require 'nokogiri'
 
-            doc = Nokogiri::HTML(open('https://www.ufret.jp/song.php?data=44896'))
+            doc = Nokogiri::HTML(open(@song.url))
             @song.title = doc.title.to_s.slice(0..(doc.title.index('/')))[0..-3]
 
             current_user.songs << @song
             current_user.save
-            flash[:notice] = "Saved!"
+            flash[:notice] = "Saved (You are the first one playing this song!)"
             redirect_to songs_path
         else
-            current_user.songs << Song.where(url: "https://www.ufret.jp/" +params[:link] )
+            current_user.songs << Song.where(url: "https://www.ufret.jp/"+params[:link])
             current_user.save
-            flash[:notice] = "Saved!"
+            flash[:notice] = "Saved (seems like someone has alreday played the song!)"
             redirect_to songs_path
         end
     end
+
+    
 end
