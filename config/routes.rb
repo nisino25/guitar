@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
   root 'welcome#index'
   get 'search', to: 'search#show'
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'songs', to: 'artist#songs'
   patch '/save_link', to: 'application#save_link'
   patch '/save_hiragana', to: 'application#save_hiragana'
+  patch '/save_song', to: 'application#save_song'
   get 'artist', to: 'artist#artist'
+  get 'mylist', to: 'user#mylist'
 
 end

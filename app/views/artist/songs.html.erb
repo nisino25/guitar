@@ -13,7 +13,11 @@
                     </div>
                     <div class="col-xs-6">
                         <% @links.each do |link|  %>
-                            <p class="source list-group-item"><a target="_blank" href=https://www.ufret.jp/<%=link %>>Song</a></p>
+                            <p class="source list-group-item"><a target="_blank" href=https://www.ufret.jp/<%=link %>>Song</a> &nbsp
+                                <%= link_to "Add",save_song_path(link: link), method: :patch ,data: {confirm: "Do you wanna save it?"}, class:" badge badge-success text-white" %>
+                                
+                            </p>
+                           
                         <% end %>
                     </div>
                 </div>

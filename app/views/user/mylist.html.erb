@@ -1,0 +1,21 @@
+Lising all songs
+
+<div class="container">
+    <div class="entry">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <% @songs.each do |song|  %>
+                        <p class="list-group-item"><%= song.title %></p>
+                    <% end %>
+                </div>
+                <div class="col-xs-6">
+                    <% @songs.each do |song|  %>
+                        <p class="source list-group-item"><%= link_to 'Song', song.url %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
