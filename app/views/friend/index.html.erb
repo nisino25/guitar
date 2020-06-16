@@ -1,0 +1,17 @@
+All other users 
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <% @others.each do |other|  %>
+                <% if !(other.email == current_user.email) %>
+                    <p class="list-group-item">
+                    <%= link_to other.email, save_following_path(email: other.email), method: :patch %>
+                    has <%= other.songs.count %> songs.
+                    </p>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+

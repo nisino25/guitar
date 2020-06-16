@@ -29,12 +29,29 @@ class ApplicationController < ActionController::Base
             flash[:notice] = "Saved (You are the first one playing this song!)"
             redirect_to songs_path
         else
-            current_user.songs << Song.where(url: "https://www.ufret.jp/"+params[:link])
+            @song = Song.where(url: "https://www.ufret.jp/"+params[:link]).first
+            current_user.songs << @song
             current_user.save
             flash[:notice] = "Saved (seems like someone has alreday played the song!)"
             redirect_to songs_path
         end
     end
+
+    def take_song 
+        @thesong = Song.where(url: params[:link]).first
+        current_user.songs << @thesong
+        current_user.save
+        flash[:notice] = "Successfully saved to your list"
+        redirect_to song_of_following_path
+    end
+
+
+    def save_following
+        current_user.following = params[:email]
+        current_user.save
+        redirect_to song_of_following_path
+    end
+    
 
     
 end

@@ -14,10 +14,8 @@
                     <div class="col-xs-6">
                         <% @links.each do |link|  %>
                             <p class="source list-group-item"><a target="_blank" href=https://www.ufret.jp/<%=link %>>Song</a> &nbsp
-                            <%= link_to "Add", save_song_path(link: link), method: :patch%>
-                                
+                            <%= link_to "Add", save_song_path(link: link), method: :patch,class:" badge badge-success text-white" %>
                             </p>
-                           
                         <% end %>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
-Lising all songs that I'm following
-
+<p class= "text-info"><%= @theuser.email  %> </p>
 <div class="container">
     <div class="entry">
         <div class="container">
@@ -12,7 +11,9 @@ Lising all songs that I'm following
                 <div class="col-xs-6">
                     <% @songs.each do |song|  %>
                         <p class="source list-group-item"><%= link_to 'Song', song.url %> &nbsp &nbsp
-                        <%=link_to "Remove", favsong_path(song),method: :delete, data: {confirm: "Do you wanna save it?"},class:" badge badge-danger text-white" %>
+                        <% if !(current_user.songs.exists?(url: song.url)) %>
+                            <%= link_to "Add", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %>
+                        <% end %>
                         </p>
                     <% end %>
                 </div>
