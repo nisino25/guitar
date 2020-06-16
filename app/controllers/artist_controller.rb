@@ -1,6 +1,8 @@
 class ArtistController < ApplicationController
 
     def songs
+        @users = User.all
+        
         require 'open-uri'
         require 'nokogiri'
 
