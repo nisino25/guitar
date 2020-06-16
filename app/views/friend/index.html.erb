@@ -7,7 +7,19 @@ All other users
                 <% if !(other.email == current_user.email) %>
                     <p class="list-group-item">
                     <%= link_to other.email, save_following_path(email: other.email), method: :patch %>
-                    has <%= other.songs.count %> songs.
+                    has <b class="text-danger"><%= other.songs.count %></b> songs.
+
+                    And 
+                    <% @count = 0 %>
+                    <% other.songs.each do |song| %>
+                    
+                        <% if current_user.songs.exists?(url: song.url) %>
+                            <% @count = @count +1 %>
+                        <% end %>
+
+                    <% end %>
+
+                    <b class="text-danger"><%= @count %></b> songs in common.
                     </p>
                 <% end %>
             <% end %>
