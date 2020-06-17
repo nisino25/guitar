@@ -22,6 +22,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'hirb'
 gem 'nokogiri'
 gem 'openssl'
+gem 'pg'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -35,7 +36,6 @@ gem 'openssl'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -49,9 +49,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do
-  gem 'pg'
-end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
