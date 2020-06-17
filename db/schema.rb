@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_06_16_003555) do
 
-  create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-  end
-
-  create_table "create_artists", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "create_songs", force: :cascade do |t|
     t.string "title"
     t.string "url"
