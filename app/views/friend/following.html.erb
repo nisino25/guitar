@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-6">
                     <% @songs.each do |song|  %>
-                        <p class="list-group-item"><%= truncate(song.title.to_s, length: 25) %></p>
+                        <p class="list-group-item"><%= truncate(song.title.to_s, length: 25) %>  by <%= truncate(song.artist.to_s, length: 25) %></p>
                     <% end %>
                 </div>
                 <div class="col-xs-6">

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_003555) do
+ActiveRecord::Schema.define(version: 2020_06_17_081133) do
+
+  create_table "add_artist_to_users", force: :cascade do |t|
+  end
 
   create_table "create_songs", force: :cascade do |t|
     t.string "title"
@@ -29,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_003555) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "artist", default: "Unlisted"
   end
 
   create_table "user_artists", force: :cascade do |t|

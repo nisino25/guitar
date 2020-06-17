@@ -4,5 +4,7 @@ class UserController < ApplicationController
         @songs = current_user.songs.all
     end
 
+    
+
 
 end
