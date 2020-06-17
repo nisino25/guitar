@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
             doc = Nokogiri::HTML(open(@song.url))
             @song.title = doc.title.to_s.slice(0..(doc.title.index('/')))[0..-3]
-            
+            @song.artist = doc.xpath(" //a [@class= 'show_artist']").children
 
             current_user.songs << @song
             current_user.save
