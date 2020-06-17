@@ -4,6 +4,7 @@
   <head>
     <title>Nfret25</title>
     <%= favicon_link_tag asset_path('logo.ico') %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,6 +15,15 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <% if current_user %>
+      <p>
+        &nbsp<%= link_to 'My list', mylist_path, class:" badge badge-warning text-white" %>
+        &nbsp<%= link_to 'Other users', friend_path, class:" badge badge-info text-white" %>
+        &nbsp<%= link_to 'Search', search_path, class:" badge badge-success text-white" %>
+        &nbsp<b><%= current_user.email %></b>
+        <%= link_to("Logout", destroy_user_session_path, class: "badge badge-danger text-white", method: :delete)%>
+      </p>
+    <% end %>
     <div class="container">
     <%= render 'layouts/messages' %>
       <%= yield %>
