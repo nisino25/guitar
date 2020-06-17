@@ -5,26 +5,27 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-6">
-
-                        <% @songs.each do |song|  %>
-                            <p class="list-group-item"><%= truncate(song.to_s, length: 50) %></p>
-                            
-                        <% end %>
-                    </div>
+                    
                     <div class="col-xs-6">
                         <% @links.each do |link|  %>
-                            <p class="source list-group-item"><a target="_blank" href=https://www.ufret.jp/<%=link %>>Song</a> &nbsp
+                            <p class="source list-group-item">
+                            <a target="_blank" href=https://www.ufret.jp/<%=link %>>Play</a> &nbsp
                             <% if !(current_user.songs.where(url: "https://www.ufret.jp/" +link).first) %>
-                                <%= link_to "Add", save_song_path(link: link), method: :patch,class:" badge badge-success text-white" %>
+                                <%= link_to "追加", save_song_path(link: link), method: :patch,class:" badge badge-success text-white" %>
                             <% end %>
-                            
+                
                             <% @users.each do |user| %>
                                 <% if (user.songs.where(url: "https://www.ufret.jp/" +link).first) && !( user == current_user) %>
-                                    <b><%= truncate(user.email.to_s, length: 15)  %></b>
                                 <% end %>
                             <% end %>
                             </p>
+                        <% end %>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <% @songs.each do |song|  %>
+                            <p class="list-group-item"><%= truncate(song.to_s, length: 10) %></p>
+                            
                         <% end %>
                     </div>
                 </div>
