@@ -5,12 +5,10 @@ All other users
         <div class="col-xs-6">
             <% @others.each do |other|  %>
                 <% if !(other.email == current_user.email) %>
-                    <p class="list-group-item">
+                    <p class="list-group-item ">
                     <%= link_to other.email, save_following_path(email: other.email), method: :patch %>
                     <br>
-                    has <b class="text-danger"><%= other.songs.count %></b> songs.
-
-                    And 
+                    <b class="badge badge-success text-white"><%= other.songs.count %></b> songs.
                     <% @count = 0 %>
                     <% other.songs.each do |song| %>
                     
@@ -18,11 +16,9 @@ All other users
                             <% @count+=1 %>
                         <% end %>
 
-                    <% end %>
-
-                    <b class="text-danger"><%= @count %></b> songs in common.
-                    <br>
-                    Following <b class="text-danger"><%= other.countnum %></b> artists
+                    <% end %> 
+                    <b class="badge badge-info text-white"><%= @count %></b> in common.
+                    <b class="badge badge-warning text-white"><%= other.countnum %></b> artists
                     </p>
                 <% end %>
             <% end %>
