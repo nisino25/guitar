@@ -24,16 +24,22 @@ class ApplicationController < ActionController::Base
             doc = Nokogiri::HTML(open(@song.url))
             @song.title = doc.title.to_s.slice(0..(doc.title.index('/')))[0..-3]
             @song.artist = doc.xpath(" //a [@class= 'show_artist']").children
-
+            @song.save
+            if !current_user.songs.exists?(artist: @song.artist.to_s)
+                current_user.countnum+=1
+                flash[:notice] = "You didn't have it and new song for us"
+            end 
             current_user.songs << @song
-            current_user.countnum+=1
+           
             current_user.save
-            flash[:notice] = "Saved (You are the first one playing this song!)"
+            # flash[:notice] = "Saved (You are the first one playing this song!)"
             redirect_to songs_path
         else
             @song = Song.where(url: "https://www.ufret.jp/"+params[:link]).first
-            current_user.songs << @song
-            current_user.countnum+=1
+            if !(current_user.songs.exists?(artist: @song.artist))
+                current_user.countnum+=1
+            end 
+            current_user.songs << @song 
             current_user.save
             flash[:notice] = "Saved (seems like someone has alreday played the song!)"
             redirect_to songs_path
@@ -42,8 +48,10 @@ class ApplicationController < ActionController::Base
 
     def take_song 
         @thesong = Song.where(url: params[:link]).first
+        if !(current_user.songs.exists?(artist: @thesong.artist))
+            current_user.countnum+=1
+        end 
         current_user.songs << @thesong
-        current_user.countnum+=1
         current_user.save
         flash[:notice] = "Successfully saved to your list"
         redirect_to song_of_following_path
