@@ -26,12 +26,14 @@ class ApplicationController < ActionController::Base
             @song.artist = doc.xpath(" //a [@class= 'show_artist']").children
 
             current_user.songs << @song
+            current_user.countnum+=1
             current_user.save
             flash[:notice] = "Saved (You are the first one playing this song!)"
             redirect_to songs_path
         else
             @song = Song.where(url: "https://www.ufret.jp/"+params[:link]).first
             current_user.songs << @song
+            current_user.countnum+=1
             current_user.save
             flash[:notice] = "Saved (seems like someone has alreday played the song!)"
             redirect_to songs_path
@@ -41,6 +43,7 @@ class ApplicationController < ActionController::Base
     def take_song 
         @thesong = Song.where(url: params[:link]).first
         current_user.songs << @thesong
+        current_user.countnum+=1
         current_user.save
         flash[:notice] = "Successfully saved to your list"
         redirect_to song_of_following_path
@@ -52,6 +55,7 @@ class ApplicationController < ActionController::Base
         current_user.save
         redirect_to song_of_following_path
     end
+
     
 
     

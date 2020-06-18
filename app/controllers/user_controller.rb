@@ -4,6 +4,12 @@ class UserController < ApplicationController
         @songs = current_user.songs.all
     end
 
+    def mylist_artist
+        @songs = current_user.songs.all
+    end
+
+    
+
     
 
 

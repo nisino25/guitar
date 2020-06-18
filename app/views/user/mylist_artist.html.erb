@@ -1,0 +1,10 @@
+<% if current_user.songs.count != 0 %>
+    Lising all <b class="text-success"><%= current_user.countnum%></b> artists that you are following
+    <br>
+    Following <b class= "text-success"><%= current_user.songs.count%></b> Songs.  <%= link_to 'View your songs', mylist_path, class:" badge badge-primary text-white" %>
+    <br>
+    
+    
+<% else %>
+    Not following any songs right now
+<% end %>

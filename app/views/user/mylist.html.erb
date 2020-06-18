@@ -1,19 +1,25 @@
-Lising all <b class="text-success"><%= current_user.songs.count%></b> songs that I'm following
-
-    <div class="entry">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <% @songs.each do |song|  %>
-                        <p class="source list-group-item">
-                        <%= link_to 'Play', song.url,class:" badge badge-info text-white" %> 
-                        <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna save it?"},class:" badge badge-danger text-white" %>
-                        <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
-                        </p>
-                    <% end %>
+<% if current_user.songs.count != 0 %>
+    Lising all <b class="text-success"><%= current_user.songs.count%></b> songs that you are following
+    <br>
+    Following <b class= "text-success"><%= current_user.countnum%></b> artists.  <%= link_to 'View your artists', mylist_artist_path, class:" badge badge-primary text-white" %>
+    <br>
+    <br>
+        <div class="entry">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <% @songs.each do |song|  %>
+                            <p class="source list-group-item">
+                            <%= link_to 'Play', song.url,class:" badge badge-info text-white" %> 
+                            <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna save it?"},class:" badge badge-danger text-white" %>
+                            <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
+                            </p>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+<% else %>
+    Not following any songs right now
+<% end %>

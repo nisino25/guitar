@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'artist', to: 'artist#artist'
   get 'mylist', to: 'user#mylist'
+  get 'mylist_artist', to: 'user#mylist_artist'
+
   resources :favsong, only: [:create, :destroy]
 
 end

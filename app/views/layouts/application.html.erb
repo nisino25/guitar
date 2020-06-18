@@ -21,7 +21,9 @@
         &nbsp<%= link_to 'Other users', friend_path, class:" badge badge-info text-white" %>
         &nbsp<%= link_to 'Search', search_path, class:" badge badge-success text-white" %>
         &nbsp<b><%= current_user.email %></b>
-        <%= link_to("Logout", destroy_user_session_path, class: "badge badge-danger text-white", method: :delete)%>
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+        <%= link_to("Logout", destroy_user_session_path, class: "badge badge-danger text-white", method: :delete,)%>
       </p>
     <% end %>
     <div class="container">
