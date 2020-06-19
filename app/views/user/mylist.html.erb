@@ -11,7 +11,7 @@
                         <% @songs.each do |song|  %>
                             <p class="source list-group-item">
                             <%= link_to 'Play', song.url,class:" badge badge-info text-white" %> 
-                            <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna save it?"},class:" badge badge-danger text-white" %>
+                            <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna delete it?"},class:" badge badge-danger text-white" %>
                             <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
                             </p>
                         <% end %>

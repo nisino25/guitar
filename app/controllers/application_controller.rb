@@ -64,6 +64,17 @@ class ApplicationController < ActionController::Base
         redirect_to song_of_following_path
     end
 
+
+    def search_specific_result
+    end
+
+    def change_list 
+        current_user.list = params[:newname]
+        current_user.save
+        redirect_to artist_with_limit_path
+    end
+
+
     
 
     

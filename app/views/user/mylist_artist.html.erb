@@ -8,3 +8,34 @@
 <% else %>
     Not following any songs right now
 <% end %>
+
+<br>
+
+<div class="entry">
+    <% @songartists.each do |songartist|  %> 
+        <p class="source list-group-item">
+            <%= link_to songartist, change_list_path(newname: songartist), method: :patch %>
+            <br>
+            <% @mycount = 0 %>
+            <% current_user.songs.each do |song| %>
+                <% if song.artist == songartist %>
+                    <% @mycount +=1 %>
+                <% end %>
+            <% end %>
+            <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
+            
+            
+            <% @changed = URI::encode(songartist) %>
+            <% linkurl = "https://www.ufret.jp/artist.php?data="+@changed %>
+            <% doc = Nokogiri::HTML(open(linkurl)) %>
+            <% @artistnum = doc.xpath(" //a [@class= 'list-group-item list-group-item-action normal-chord']/strong").children.count %>
+
+            <%= @artistnum %></b> total songs.
+        </p>
+
+    <% end %>
+
+
+
+
+</div>
