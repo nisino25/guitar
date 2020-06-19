@@ -3,9 +3,14 @@ Listing <%= @theuser.list %> with the only songs you followimng
 <% @theuser.songs.each do |song|  %>
     <% if song.artist == @theuser.list %>
         <p class="source list-group-item">
-        <%= link_to 'Play', song.url,class:" badge badge-info text-white" %> 
-        <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna delete it?"},class:" badge badge-danger text-white" %>
-        <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
+        <% if !(current_user.songs.exists?(url: song.url)) %>
+            <%= link_to "追加", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %> &nbsp 
+        <% else %>
+            &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
+        <% end %>
+        <%= link_to 'Play', song.url %> 
+        <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
         </p>
     <% end %>
 <% end %>
+
