@@ -1,25 +1,15 @@
-# README
+  patch '/change_list', to: 'application#change_list'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  def change_list 
+        current_user.list = params[:newname]
+        current_user.save
+        redirect_to artist_with_limit_path
+    end
 
-Things you may want to cover:
 
-* Ruby version
+ <% @changed = URI::encode(songartist) %>
+            <% linkurl = "https://www.ufret.jp/artist.php?data="+@changed %>
+            <% doc = Nokogiri::HTML(open(linkurl)) %>
+            <% @artistnum = doc.xpath(" //a [@class= 'list-group-item list-group-item-action normal-chord']/strong").children.count %>
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# guitar
+            <%= @artistnum %></b> total songs.
