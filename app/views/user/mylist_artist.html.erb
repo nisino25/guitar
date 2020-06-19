@@ -21,7 +21,8 @@
             <% end %>
             <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
              
-            <% linkurl = "https://www.ufret.jp/artist.php?data="+@changed %>
+            <% linkurl = "https://www.ufret.jp/artist.php?data=%E3%81%8F%E3%81%98%E3%82%89"%>
+            <% doc = Nokogiri::HTML(open(linkurl)) %>
             <% @artistnum = doc.xpath(" //a [@class= 'list-group-item list-group-item-action normal-chord']/strong").children.count %>
 
             <%= @artistnum %></b> total songs.
