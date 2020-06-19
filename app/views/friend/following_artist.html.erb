@@ -1,0 +1,38 @@
+<% if current_user.songs.count != 0 %>
+    <b class="text-info"><%= @theuser.email %></b>
+    <br>
+    Lising all <b class="text-success"><%= @theuser.countnum%></b> artists that you are following
+    <br>
+    Following <b class= "text-success"><%= @theuser.songs.count%></b> Songs.  <%= link_to 'View your songs', song_of_following_path, class:" badge badge-primary text-white" %>
+    <br>
+    <%= link_to '戻る', friend_path %>
+    <br>
+    <br>
+
+
+    <div class="entry">
+    <% @songartists.each do |songartist|  %> 
+        <p class="source list-group-item">
+            <%= link_to songartist, change_following_list_path(newname: songartist), method: :patch %>
+            <br>
+            <% @mycount = 0 %>
+            <% @theuser.songs.each do |song| %>
+                <% if song.artist == songartist %>
+                    <% @mycount +=1 %>
+                <% end %>
+            <% end %>
+            <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
+
+            <% songartist = change_artist(songartist) %>
+
+            <%= @artistnum  %></b> total songs.
+        </p>
+    <% end %>
+</div>
+
+  
+    
+<% else %>
+    Not following any songs right now
+<% end %>
+

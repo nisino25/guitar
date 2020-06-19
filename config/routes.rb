@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   patch '/song_list', to: 'friend#song_list'
   patch '/search_specific_song_list', to: 'friend#result'
   patch '/change_list', to: 'application#change_list'
-
+  patch '/change_following_list', to: 'application#change_following_list'
 
 
   get 'song_of_following', to: 'friend#following'
@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'mylist_artist', to: 'user#mylist_artist'
   get 'searchsong', to: 'searchsong#search'
   get 'artist_with_limit', to: 'user#artist_with_limit'
+  get 'following_artist', to: 'friend#following_artist'
+  get 'artist_following_with_limit', to: 'friend#artist_following_with_limit'
 
 
 

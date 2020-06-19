@@ -74,21 +74,12 @@ class ApplicationController < ActionController::Base
         redirect_to artist_with_limit_path
     end
 
-    def change_artist(link)
-
-        require 'uri' 
-        require 'open-uri' 
-        require 'nokogiri' 
-
-        @changed = URI::encode(params[:link]) 
-        linkurl = "https://www.ufret.jp/artist.php?data="+@changed 
-        doc = Nokogiri::HTML(open(linkurl)) 
-        @artistnum = doc.xpath(" //a [@class= 'list-group-item list-group-item-action normal-chord']/strong").children.count 
-        return @artistnum 
-
+    def change_following_list 
+        @theuser = User.where(email: current_user.following).first
+        @theuser.list = params[:newname]
+        @theuser.save
+        redirect_to artist_following_with_limit_path
     end
-
-    
 
     
 end

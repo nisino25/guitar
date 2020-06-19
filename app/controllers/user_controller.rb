@@ -7,8 +7,6 @@ class UserController < ApplicationController
     def mylist_artist
         @songs = current_user.songs.all
         @songartists = @songs.pluck(:artist).uniq
-
-        
     end
 
     def artist_with_limit

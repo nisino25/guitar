@@ -1,23 +1,34 @@
-<p class= "text-info"><%= @theuser.email  %> </p>
-<div class="container">
-    <div class="entry">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <% @songs.each do |song|  %>
+<% if @theuser.songs.count != 0 %>
+    <b class="text-info"><%= @theuser.email %></b>
+    <br>
+    Lising all <b class="text-success"><%= @theuser.songs.count%></b> songs that they are following
+    <br>
+    Following <b class= "text-success"><%= @theuser.countnum%></b> artists.  <%= link_to 'View their artists', following_artist_path, class:" badge badge-primary text-white" %>
+    <br>
+    <%= link_to '戻る', friend_path %>
+    <br>
+    <br>
+    
+    <div class="container">
+        <div class="entry">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <% @songs.each do |song|  %>
 
-                        <p class="source list-group-item">
-                        <% if !(current_user.songs.exists?(url: song.url)) %>
-                            <%= link_to "追加", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %> &nbsp 
-                        <% else %>
-                            &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
+                            <p class="source list-group-item">
+                            <% if !(current_user.songs.exists?(url: song.url)) %>
+                                <%= link_to "追加", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %> &nbsp 
+                            <% else %>
+                                &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
+                            <% end %>
+                            <%= link_to 'Play', song.url %> 
+                            <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
+                            </p>
                         <% end %>
-                        <%= link_to 'Play', song.url %> 
-                        <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
-                        </p>
-                    <% end %>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<% end %>

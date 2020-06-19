@@ -18,4 +18,18 @@ class FriendController < ApplicationController
         @songs = @theuser.songs.all
     end
 
+    def following_artist
+        @theuser = User.where(email: current_user.following).first
+        @songs = @theuser.songs.all
+        @songartists = @songs.pluck(:artist).uniq
+    end
+
+    def artist_following_with_limit
+        @theuser = User.where(email: current_user.following).first 
+        require 'uri' 
+        require 'open-uri' 
+        require 'nokogiri' 
+    end
+
+
 end
