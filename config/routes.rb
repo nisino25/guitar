@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch '/change_following_list', to: 'application#change_following_list'
   
   get '/search_specific_song_list', to: 'search#result'
+  get '/fast', to: 'search#fast'
 
   get 'song_of_following', to: 'friend#following'
   get 'friend', to: 'friend#index'
