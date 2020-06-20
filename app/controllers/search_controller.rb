@@ -47,8 +47,13 @@ class SearchController < ApplicationController
         num = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/@href").children.count
         @links = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/@href").children.take(num -22).drop(1)
 
+
         @all = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/strong").children.count
         @songs = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/strong").children.take(@all -22)
+        
+        @allart = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/span").children.count
+        @artists = doc.xpath(" //a [@class= 'list-group-item list-group-item-action']/span").children.take(@allart -1).drop(2)
+        
     end
 
 end

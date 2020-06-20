@@ -19,6 +19,7 @@
                             <% artistname = get_artistname(link) %>
 
                             <%= truncate(songname.to_s, length: 15) %>
+                            <br>
                              <b>by <%= truncate(artistname.to_s, length: 15) %></b>
                             </p>
                         <% end %>

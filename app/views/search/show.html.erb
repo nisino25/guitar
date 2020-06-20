@@ -18,14 +18,7 @@
 <div class='search-area'>
 <br>
   <h3>Search Songs</h3>
-  <p>Accurate but slow(正確だけど遅い）</p>
-  <%= form_tag(search_specific_song_list_path,:method => 'get') do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag 'Search', :name => nil %>
-  <% end %>
-  <br>
-  <br>
-  <p>Fast but kinda hard to see（早いけど読みづらい）</p>
+  <p>Type only song name</p>
   <%= form_tag(fast_path,:method => 'get') do %>
     <%= text_field_tag :search %>
     <%= submit_tag 'Search', :name => nil %>
