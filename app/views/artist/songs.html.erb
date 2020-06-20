@@ -9,7 +9,8 @@
                     <div class="col-xs-6">
                         <% @links.each do |link|  %>
                             <p class="source list-group-item">
-                            <a target="_blank" href=https://www.ufret.jp/<%=link %>>Play</a> &nbsp
+                            <% @songlink = "https://www.ufret.jp/"+link %>
+                            <%= link_to 'Play', plusone_path(link: @songlink), class:" badge badge-info text-white", method: :patch %> &nbsp
                             <% if !(current_user.songs.where(url: "https://www.ufret.jp/" +link).first) %>
                                 <%= link_to "追加", save_song_path(link: link), method: :patch,class:" badge badge-success text-white" %>
                             <% end %>

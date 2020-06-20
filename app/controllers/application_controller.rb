@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user!
 
+    def plusone
+        require 'open-uri'
+        current_user.total +=1
+        current_user.save
+        redirect_to params[:link]
+    end
+
     def save_link
         current_user.artist_url = "https://www.ufret.jp/" +params[:link]
         current_user.save

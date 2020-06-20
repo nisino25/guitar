@@ -22,7 +22,7 @@
                             <% else %>
                                 &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
                             <% end %>
-                            <%= link_to 'Play', song.url %> 
+                            <%= link_to 'Play', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
                             <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
                             </p>
                         <% end %>

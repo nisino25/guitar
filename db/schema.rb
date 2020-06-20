@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_003824) do
+ActiveRecord::Schema.define(version: 2020_06_20_084022) do
 
   create_table "add_artist_count_to_users", force: :cascade do |t|
   end
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 2020_06_19_003824) do
   end
 
   create_table "add_list_to_users", force: :cascade do |t|
+  end
+
+  create_table "add_total_to_users", force: :cascade do |t|
   end
 
   create_table "create_songs", force: :cascade do |t|
@@ -73,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_06_19_003824) do
     t.text "following", default: ""
     t.integer "countnum", default: 0
     t.text "list", default: "Absolute no one"
+    t.integer "total", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,7 +1,9 @@
 <% if current_user.songs.count != 0 %>
     Lising all <b class="text-success"><%= current_user.songs.count%></b> songs that you are following
     <br>
-    Following <b class= "text-success"><%= current_user.countnum%></b> artists.  <%= link_to 'View your artists', mylist_artist_path, class:" badge badge-primary text-white" %>
+    Following <b class= "text-success"><%= current_user.countnum%></b> artists  <%= link_to 'View your artists', mylist_artist_path, class:" badge badge-primary text-white" %>
+    <br>
+    You played <b class="text-success"><%= current_user.total %></b> times
     <br>
     <br>
         <div class="entry">
@@ -10,7 +12,7 @@
                     <div class="col-xs-6">
                         <% @songs.each do |song|  %>
                             <p class="source list-group-item">
-                            <%= link_to 'Play', song.url,class:" badge badge-info text-white" %> 
+                            <%= link_to 'Play', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
                             <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna delete it?"},class:" badge badge-danger text-white" %>
                             <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
                             </p>
