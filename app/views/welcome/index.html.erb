@@ -5,7 +5,7 @@
     <hr class="my-4">
     <p class="badge badge-info text-white">Total user: <%= User.all.count %><br>
     Total play times: <%= @totalnum %><br>
-    Total favored songs: <%= Song.count %><br></p>
+    Total added songs by the users: <%= Song.count %><br></p>
     <% if !(current_user)%>
         <%= link_to "SIGN UP",  new_user_registration_path, class: "btn btn-success btn-lg" %>
         &nbsp
