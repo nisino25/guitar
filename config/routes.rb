@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   patch '/take_song', to: 'application#take_song'
   patch '/save_following', to: 'application#save_following'
   patch '/song_list', to: 'friend#song_list'
-  patch '/search_specific_song_list', to: 'friend#result'
   patch '/change_list', to: 'application#change_list'
   patch '/change_following_list', to: 'application#change_following_list'
-
+  
+  get '/search_specific_song_list', to: 'search#result'
 
   get 'song_of_following', to: 'friend#following'
   get 'friend', to: 'friend#index'
