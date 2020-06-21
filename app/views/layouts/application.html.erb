@@ -21,13 +21,7 @@
         &nbsp<%= link_to 'My list', mylist_artist_path, class:" badge badge-warning text-white" %>
         &nbsp<%= link_to 'Other users', friend_path, class:" badge badge-info text-white" %>
         &nbsp<%= link_to 'Search', search_path, class:" badge badge-success text-white" %>
-        &nbsp
-        <% if current_user.username %>
-          <b><%= current_user.username%></b>
-        <% else %>
-          Choose username
-          <i style="font-size:24px" class="fa">&#xf013;</i>
-        <% end %>
+        &nbsp <b class="badge badge-secondary text-white" ><%= current_user.email %></b>
         <br>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
         <%= link_to("Logout", destroy_user_session_path, class: "badge badge-danger text-white", method: :delete,)%>
