@@ -1,11 +1,11 @@
 
 
 <% if current_user.songs.count != 0 %>
-    <b class="text-info"><%= @theuser.email %></b>
+    <b class="text-info"><%= @theuser.email.split("@").first %></b>
     <br>
     Lising all <b class="text-success"><%= @theuser.countnum%></b> artists that you are following
     <br>
-    Following <b class= "text-success"><%= @theuser.songs.count%></b> Songs.  <%= link_to 'View your songs', song_of_following_path, class:" badge badge-primary text-white" %>
+    Following <b class= "text-success"><%= @theuser.songs.count%></b> Songs.  <%= link_to 'View their songs', song_of_following_path, class:" badge badge-primary text-white" %>
     <br>
     <%= link_to '戻る', friend_path %>
     <br>

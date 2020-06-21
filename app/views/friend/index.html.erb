@@ -7,7 +7,7 @@ All other users
             <% @others.each do |other|  %>
                 <% if !(other.email == current_user.email) %>
                     <p class="list-group-item ">
-                    <%= link_to other.email, save_following_path(email: other.email), method: :patch %>
+                    <%= link_to other.email.split("@").first, save_following_path(email: other.email), method: :patch %>
                     <br>
                     <b class="badge badge-success text-white"><%= other.songs.count %></b> songs
                     <% @count = 0 %>

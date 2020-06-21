@@ -5,6 +5,7 @@
     <title>Nfret25</title>
     <%= favicon_link_tag asset_path('logo.ico') %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,7 +21,13 @@
         &nbsp<%= link_to 'My list', mylist_artist_path, class:" badge badge-warning text-white" %>
         &nbsp<%= link_to 'Other users', friend_path, class:" badge badge-info text-white" %>
         &nbsp<%= link_to 'Search', search_path, class:" badge badge-success text-white" %>
-        &nbsp<b><%= current_user.email %></b>
+        &nbsp
+        <% if current_user.username %>
+          <b><%= current_user.username%></b>
+        <% else %>
+          Choose username
+          <i style="font-size:24px" class="fa">&#xf013;</i>
+        <% end %>
         <br>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
         <%= link_to("Logout", destroy_user_session_path, class: "badge badge-danger text-white", method: :delete,)%>

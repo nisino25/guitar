@@ -1,5 +1,5 @@
 <% if @theuser.songs.count != 0 %>
-    <b class="text-info"><%= @theuser.email %></b>
+    <b class="text-info"><%= @theuser.email.split("@").first %></b>
     <br>
     Lising all <b class="text-success"><%= @theuser.songs.count%></b> songs that they are following
     <br>
