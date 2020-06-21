@@ -8,16 +8,20 @@
 <% end %>
 
 <% @inst = change_artist(@inst) %> 
-You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
 <%= link_to @artistnum, jumplink_path, method: :patch %>
-</b> total songs.
+曲中
+<b class="text-danger"><%= @mycount%>
+</b>曲がお気に入りに追加されています <b class="text-success">
+<br>
+<%= link_to '他の曲を確認する', jumplink_path, method: :patch %>
+</b> 
 
 
 <p><%= link_to '戻る', mylist_artist_path %></p>
 <% current_user.songs.each do |song|  %>
     <% if song.artist == current_user.list %>
         <p class="source list-group-item">
-        <%= link_to 'Play', plusone_path(link: song.url), method: :patch,class:" badge badge-info text-white" %> 
+        <%= link_to 'プレイ', plusone_path(link: song.url), method: :patch,class:" badge badge-info text-white" %> 
         <%=link_to "消", favsong_path(song),method: :delete, data: {confirm: "Do you wanna delete it?"},class:" badge badge-danger text-white" %>
         <%= truncate(song.title.to_s, length: 15) %> <b>by <%= truncate(song.artist.to_s, length: 10)%></b>
         </p>

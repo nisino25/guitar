@@ -1,11 +1,11 @@
 <% if current_user.songs.count != 0 %>
-    Lising all <b class="text-success"><%= current_user.countnum%></b> artists that you are following
+    <b class="text-success"><%= current_user.countnum%></b>組のアーティストをフォロー中
     <br>
-    Following <b class= "text-success"><%= current_user.songs.count%></b> Songs.  <%= link_to 'View your songs', mylist_path, class:" badge badge-primary text-white" %>
+    合計<b class= "text-success"><%= current_user.songs.count%></b>曲  <%= link_to '曲のリストを見る', mylist_path, class:" badge badge-primary text-white" %>
     <br>
     
 <% else %>
-    Not following any songs right now
+    お気に入りの曲が登録されていません
 <% end %>
 <br>
 <div class="entry">
@@ -19,7 +19,7 @@
                     <% @mycount +=1 %>
                 <% end %>
             <% end %>
-            <b class="text-danger"><%= @mycount %></b> songs
+            <b class="text-danger"><%= @mycount %></b>曲
 
         </p>
     <% end %>

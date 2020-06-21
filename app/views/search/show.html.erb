@@ -17,10 +17,11 @@
 
 <div class='search-area'>
 <br>
-  <h3>Search Songs</h3>
-  <p>Type only song name</p>
+<br>
+  <h3>曲名を検索</h3>
+  <p classs="text-secondary"><small>現在曲名だけしか検索できません。<br>アーティスト名は上の５０音をお使いください。</small></p>
   <%= form_tag(fast_path,:method => 'get') do %>
     <%= text_field_tag :search %>
-    <%= submit_tag 'Search', :name => nil %>
+    <%= submit_tag '検索', :name => nil %>
   <% end %>
 </div>

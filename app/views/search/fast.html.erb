@@ -1,8 +1,8 @@
 <div class="container">
     <div class="entry"> 
-        <h3 class="h3">The result of <br>
-        [ <%= params[:search] %> ]</h3>
-        <p> Showing <b class="text-success" ><%= @all - 22  %></b> songs.  </p>
+        <h3 class="h3">[ <%= params[:search] %> ]<br>
+        の検索結果</h3>
+        <p><b class="text-success" ><%= @all - 22  %></b>曲ヒット  </p>
         <p><%= link_to '戻る', search_path %></p>
 
         <% @ig =  0 %>
@@ -17,7 +17,7 @@
                                 <%= link_to "追加", save_song_path(link: link), method: :patch,class:" badge badge-success text-white" %>
                             <% else %> &nbsp &nbsp &nbsp &nbsp&nbsp
                             <% end %>
-                            <%= link_to 'Play', plusone_path(link: "https://www.ufret.jp//"+link), method: :patch,class:" badge badge-info text-white" %> 
+                            <%= link_to 'プレイ', plusone_path(link: "https://www.ufret.jp//"+link), method: :patch,class:" badge badge-info text-white" %> 
                             <%= truncate(@songs[@ig].to_s, length: 10) %>
                             <% @ig += 1 %>
                             <b> by </b>

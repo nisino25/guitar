@@ -2,6 +2,7 @@ class FriendController < ApplicationController
 
     def index
         @others = User.all
+        @num = @others.count - 1
 
         # @others.each do |other|
         #     other.songs.each |song|

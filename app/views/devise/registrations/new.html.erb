@@ -1,16 +1,16 @@
 <div class="container">
-  <h1><%= t('.sign_up') %></h1>
+  <h1><%= t('登録') %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= bootstrap_devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :email %>
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :password %>
+      <%= f.label :パスワード %>
       <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
 
       <% if @minimum_password_length %>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :password_confirmation %>
+      <%= f.label :パスワードの確認　 %>
       <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
     </div>
 

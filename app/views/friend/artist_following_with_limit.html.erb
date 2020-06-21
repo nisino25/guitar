@@ -9,9 +9,14 @@
 
 <% @inst = change_artist(@inst) %>
 
-You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
-<%= link_to @artistnum, jumplinkfriend_path(link: @theuser.list), method: :patch %>
-</b> total songs.
+このユーザーは
+<b class="text-success"><%= link_to @artistnum, jumplinkfriend_path(link: @theuser.list), method: :patch %></b>
+曲中
+<b class="text-danger"><%= @mycount %></b> 曲を
+<br>
+お気に入りに登録しています
+<br>
+<%= link_to '他の曲を確認する', jumplink_path, method: :patch %>
 
 
 <p><%= link_to '戻る', following_artist_path %></p>
@@ -23,7 +28,7 @@ You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-s
     <% else %>
         &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
     <% end %>
-    <%= link_to 'Play', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
+    <%= link_to 'プレイ', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
     <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
     </p>
 <% end %>
