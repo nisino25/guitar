@@ -8,6 +8,30 @@ class ApplicationController < ActionController::Base
         redirect_to params[:link]
     end
 
+    def jumplink
+        require 'uri' 
+        require 'open-uri' 
+        require 'nokogiri' 
+    
+        @changed = URI::encode(current_user.list) 
+        current_user.artist_url = "https://www.ufret.jp/artist.php?data="+@changed 
+        current_user.save
+        redirect_to songs_path
+    
+    end
+
+    def jumplinkfriend
+        require 'uri' 
+        require 'open-uri' 
+        require 'nokogiri' 
+    
+        @changed = URI::encode(params[:link]) 
+        current_user.artist_url = "https://www.ufret.jp/artist.php?data="+@changed 
+        current_user.save
+        redirect_to songs_path
+    
+    end
+
     def save_link
         current_user.artist_url = "https://www.ufret.jp/" +params[:link]
         current_user.save

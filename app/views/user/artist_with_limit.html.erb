@@ -7,9 +7,10 @@
     <% end %>
 <% end %>
 
-<% @inst = change_artist(@inst) %>
-
-You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success"><%= @artistnum  %></b> total songs.
+<% @inst = change_artist(@inst) %> 
+You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success">
+<%= link_to @artistnum, jumplink_path, method: :patch %>
+</b> total songs.
 
 
 <p><%= link_to '戻る', mylist_artist_path %></p>

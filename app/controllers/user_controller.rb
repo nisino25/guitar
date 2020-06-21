@@ -16,6 +16,7 @@ class UserController < ApplicationController
         @songs = current_user.songs.all
         @songartists = @songs.pluck(:artist).uniq
         @inst = current_user.list
+        @jumplink = current_user.list
     end
     
 end
