@@ -1,16 +1,29 @@
-Listing <%= @theuser.list %> with the only songs you followimng
+<b class="text-info"><%= @theuser.list %></b>
+<br>
+<% @mycount = 0 %>
+<% @songs.each do |song| %>
+    <% if song.artist == @theuser.list %>
+        <% @mycount +=1 %>
+    <% end %>
+<% end %>
+
+<% @inst = change_artist(@inst) %>
+
+You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success"><%= @artistnum  %></b> total songs.
+
+
 <p><%= link_to '戻る', following_artist_path %></p>
 <% @theuser.songs.each do |song|  %>
     <% if song.artist == @theuser.list %>
-        <p class="source list-group-item">
-        <% if !(current_user.songs.exists?(url: song.url)) %>
-            <%= link_to "追加", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %> &nbsp 
-        <% else %>
-            &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
-        <% end %>
-        <%= link_to 'Play', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
-        <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
-        </p>
+    <p class="source list-group-item">
+    <% if !(current_user.songs.exists?(url: song.url)) %>
+        <%= link_to "追加", take_song_path(link: song.url), method: :patch,class:" badge badge-success text-white" %> &nbsp 
+    <% else %>
+        &nbsp   &nbsp  &nbsp   &nbsp&nbsp&nbsp
     <% end %>
+    <%= link_to 'Play', plusone_path(link: song.url), class:" badge badge-info text-white", method: :patch %> 
+    <%= truncate(song.title.to_s, length: 25) %>  <b>by <%= truncate(song.artist.to_s, length: 25) %></b>
+    </p>
+<% end %>
 <% end %>
 

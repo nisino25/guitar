@@ -1,4 +1,17 @@
-Listing <%= current_user.list %> with the only songs you followimng
+<b class="text-info"><%= current_user.list %></b>
+<br>
+<% @mycount = 0 %>
+<% @songs.each do |song| %>
+    <% if song.artist == current_user.list %>
+        <% @mycount +=1 %>
+    <% end %>
+<% end %>
+
+<% @inst = change_artist(@inst) %>
+
+You are following <b class="text-danger"><%= @mycount %></b> of <b class="text-success"><%= @artistnum  %></b> total songs.
+
+
 <p><%= link_to '戻る', mylist_artist_path %></p>
 <% current_user.songs.each do |song|  %>
     <% if song.artist == current_user.list %>
@@ -9,3 +22,4 @@ Listing <%= current_user.list %> with the only songs you followimng
         </p>
     <% end %>
 <% end %>
+

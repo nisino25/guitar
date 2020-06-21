@@ -13,6 +13,9 @@ class UserController < ApplicationController
         require 'uri' 
         require 'open-uri' 
         require 'nokogiri' 
+        @songs = current_user.songs.all
+        @songartists = @songs.pluck(:artist).uniq
+        @inst = current_user.list
     end
     
 end
