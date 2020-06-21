@@ -17,7 +17,7 @@
     <%= render 'layouts/navbar' %>
     <% if current_user %>
       <p>
-        &nbsp<%= link_to 'My list', mylist_path, class:" badge badge-warning text-white" %>
+        &nbsp<%= link_to 'My list', mylist_artist_path, class:" badge badge-warning text-white" %>
         &nbsp<%= link_to 'Other users', friend_path, class:" badge badge-info text-white" %>
         &nbsp<%= link_to 'Search', search_path, class:" badge badge-success text-white" %>
         &nbsp<b><%= current_user.email %></b>

@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
     def save_following
         current_user.following = params[:email]
         current_user.save
-        redirect_to song_of_following_path
+        redirect_to following_artist_path
     end
 
 
